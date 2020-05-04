@@ -1,3 +1,5 @@
+# This file includes the main function to run for the prediction model
+
 import pandas as pd
 import pickle
 from loanDictionary import loans_df, loan_dict

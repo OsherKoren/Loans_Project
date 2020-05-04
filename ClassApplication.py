@@ -14,7 +14,8 @@ class Application:
         self.consultant = consultant
         self.loan_amount_range = loan_amount_range
 
-# Set Loan Details: By user inputs
+# Set Loan Details:
+# Returns user input for business district
 def set_district():
         district = input("Please Enter the business district:  Center / South / North  ")
         district = district.capitalize().replace(' ','')
@@ -26,6 +27,7 @@ def set_district():
             print("The District was successfully typed \n")
         return district
 
+# Returns user input of applicant gender
 def set_gender():
     gender = input("Please Enter the applicant gender:  M / F ")
     gender = gender.capitalize().replace(' ','')
@@ -37,6 +39,7 @@ def set_gender():
         print("The Gender was successfully typed \n")
     return gender
 
+# Returns user input of business ownership structure
 def set_ownership():
     ownership = input("Please Enter the business Ownership:  One Owner / Multiple Owners ")
     ownership = ownership.title()
@@ -48,6 +51,7 @@ def set_ownership():
         print("The Ownership was successfully typed \n")
     return ownership
 
+# Returns user input for applicant age range
 def set_age_range():
     age_range = input("Please Enter the Applicant age range:  20 - 30 / 30 - 40 / 40 - 50 / 50 - 60 / 60 - 70  ")
     while age_range not in loans_df['Age Range'].unique():
@@ -57,6 +61,7 @@ def set_age_range():
         print("The Age Range was successfully typed \n")
     return age_range
 
+# Returns user input of the country of the business
 def set_country():
     print('Countries . Options : \n', loans_df['Country'].unique())
     country = input("Please Enter the Country in which the business is located from the list above: ")
@@ -70,6 +75,7 @@ def set_country():
         print("The country was successfully typed \n")
     return country
 
+# Returns user input of business status (New/Old)
 def set_business_status():
     business_status = input("Please Enter the business Status:  New Business / Old Business ")
     business_status = business_status.title()
@@ -81,6 +87,7 @@ def set_business_status():
         print("The Business status was successfully typed \n")
     return business_status
 
+# Returns user input of the business field
 def set_field():
     print('Field of business. Options : \n', loans_df['Field'].unique())
     field = input("Please Enter the field of the business : ")
@@ -94,7 +101,8 @@ def set_field():
         print("The field of business was successfully typed \n")
     return field
 
-def set_consultant(): # Ask user input, returns consultant firm ('Real names have changed... ")
+# Returns user input of the consulting company that accompanies him ("Real names changed ...")
+def set_consultant():
     print('Counsultant . Options : \n', loans_df['Consultant'].unique())
     consultant = input("Please Enter consultant's name in initials from the list above . example: E.D ")
     consultant = consultant.upper().replace(" ","")
@@ -107,7 +115,8 @@ def set_consultant(): # Ask user input, returns consultant firm ('Real names hav
         print("The consultant initials was successfully typed \n")
     return consultant
 
-def set_loan_amount_range(): # Ask user input, returns loan amount range
+# Returns user input of loan amount range
+def set_loan_amount_range():
     print('Loan Amount Range. Options : \n',
            'Very Low (0 - 25000) \n',
            'Low (25000 - 50000) \n',
