@@ -629,6 +629,21 @@ encoded_y = encoded_data['Repaid']
 # Pre check
 encoded_X.shape[0] == encoded_y.shape[0]
 
+# Plot and check if there is correlation between the categories
+fig = plt.figure(figsize=(8,6))
+corr = encoded_data.corr()
+sns.heatmap(corr, cmap="coolwarm_r")
+plt.title('Correlation Plot')
+plt.savefig('corr.png', bbox_inches = 'tight')
+
+# It seems that there is no correlation between the categories
+
+X_train, X_test, y_train, y_test = train_test_split(encoded_X, encoded_y, test_size = 0.2, random_state = 42 )
+
+# Check the sets shape
+print('Training shape: ', X_train.shape)
+print('Testing shape: ', X_test.shape)
+
 # Resample the data to get balanced target values
 # First, recall the unbalanced target data
 count_Repaid_N, count_Repaid_Y = encoded_data.Repaid.value_counts()
@@ -640,29 +655,11 @@ Repaid_Y = encoded_data[encoded_data['Repaid'] == 1]
 
 # Use random over-sampling to balance the target class of 'N' to the 'Y' before training the data
 ros = RandomOverSampler(random_state=1)
-X, y = ros.fit_resample(encoded_X, encoded_y)
+X_train, y_train = ros.fit_resample(X_train, y_train)
 
 # Count and recheck if now the target values are balanced
 from collections import Counter 
-print(sorted(Counter(y).items()))
-
-resampled = pd.DataFrame(data=X, columns=encoded_data.drop('Repaid', axis=1).columns)
-resampled['Repaid'] = y
-
-# Plot and check if there is correlation between the categories
-fig = plt.figure(figsize=(8,6))
-corr = resampled.corr()
-sns.heatmap(corr, cmap="coolwarm_r")
-plt.title('Correlation Plot')
-plt.savefig('corr.png', bbox_inches = 'tight')
-
-# It seems that there is no correlation between the categories
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, random_state = 42 )
-
-# Check the sets shape
-print('Training shape: ', X_train.shape)
-print('Testing shape: ', X_test.shape)
+print(sorted(Counter(y_train).items()))
 
 # Train different models
 
@@ -853,21 +850,21 @@ pprint('Best parameters for the the Random Forest Tree model are  {}'.format(ran
 print('Fitting 5 folds for each of 100 candidates, totalling 500 fits')
 print('Best parameters for the the Random Forest Tree model are')
 print('n_estimators: 101')
-print('max_features: 1') 
+print('max_features: 2')
 print('max_depth: None')
-print('min_samples_split: 4')
-print('min_samples_leaf: 1')
+print('min_samples_split: 7')
+print('min_samples_leaf: 8')
 print('criterion: entropy')
-print('bootstrap: False')
+print('bootstrap: True')
 
 # Tune Random Forest model with best parameters and compare the results with the default parameters in the model
 tuned_rf = RandomForestClassifier(n_estimators=101,
                                  criterion='entropy',
                                  max_depth=None,
-                                 min_samples_split=4,
-                                 min_samples_leaf=1,
-                                 max_features=1,
-                                 bootstrap='False',
+                                 min_samples_split=7,
+                                 min_samples_leaf=8,
+                                 max_features=2,
+                                 bootstrap='True',
                                  random_state=42)
 print ('Random Forest Model with default parameters')
 print ('-'*50)
@@ -877,16 +874,11 @@ print ('-'*50)
 tunedRF = ml_model('Tuned_Loan_RF_Classifier', tuned_rf)
 
 
-# Model with the tuned parameters produce a better recall - by ~2%
-# But on the default parameters produce beter Precision by ~3%
-
-# In risk management, one should ask which error will cost more ... In this case, the loan approval cost, which is then not repaid,
-# is higher than the cost of not approving a loan, that would have been repaid.
-# So Random Forest Model with default parameters is the best model in this case.
+# Default parameters produce better results
 
 # Which are the most important features in the model
 
-feature_importances = pd.DataFrame(tuned_rf.feature_importances_, index=resampled.columns.drop('Repaid'),
+feature_importances = pd.DataFrame(rf.feature_importances_, index=encoded_data.columns.drop('Repaid'),
                                    columns=['Importance']).sort_values('Importance', ascending=False)
 
 fig = plt.figure(figsize=(10,6))
