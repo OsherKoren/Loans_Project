@@ -598,8 +598,8 @@ pio.write_html(fig, file='Scatter_consultants_fig.html', auto_open=False) # as i
 
 # After exploring and analyzing the data, I will use machine learning algorithm on the data and try to predict
 # if a loan will be repaid or is it a 'risky' loan.
-# First, copy the original data frame, and take only 'object' and 'category' columns type to train on
-categ_data = loans.select_dtypes(include=['object','category']).copy()
+# Filter the original data frame, and take only 'object' and 'category' columns type to train on
+categ_data = loans.select_dtypes(include=['object','category'])
 print(categ_data.info())
 
 # Check to see if there are null values. I didn't encounter null values along the data analysis, but I will check anyway
