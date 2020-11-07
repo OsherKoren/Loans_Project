@@ -1,4 +1,5 @@
 # Loans analysis & prediction
+http://localhost:8888/notebooks/loans_project/loans_project.ipynb
 Loans database analysis. 
 Analysis of doubtful and lost debts from the business loans portfolio. 
 Statistical analysis by demographic, business, and sectoral characteristics. 
