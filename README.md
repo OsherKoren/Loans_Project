@@ -1,5 +1,7 @@
 # Loans analysis & prediction
 
+https://colab.research.google.com/drive/1cKs6ELwGFxha-ycA2h6Gfx2Cd4JfB4N2#scrollTo=e0ek2_h7O5Hc
+
 Loans database analysis. 
 Analysis of doubtful and lost debts from the business loans portfolio. 
 Statistical analysis by demographic, business, and sectoral characteristics. 
