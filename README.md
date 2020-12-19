@@ -1,7 +1,5 @@
 # Loans analysis & prediction
 
-file:///C:/Users/elcha/loans_project/loans_project.html
-
 Loans database analysis. 
 Analysis of doubtful and lost debts from the business loans portfolio. 
 Statistical analysis by demographic, business, and sectoral characteristics. 
