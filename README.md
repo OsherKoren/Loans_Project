@@ -1,4 +1,5 @@
 # Loans analysis & prediction
+https://nbviewer.jupyter.org/github/OsherKoren/Loans_Project/blob/master/loans_project.ipynb 
 
 Loans database analysis. 
 Analysis of doubtful and lost debts from the business loans portfolio. 
