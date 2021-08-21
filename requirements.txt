@@ -31,7 +31,7 @@ plotly==4.8.1
 pluggy==0.13.1
 prompt-toolkit==3.0.5
 psutil==5.7.0
-py==1.8.1
+py==1.10.0
 Pygments==2.6.1
 pyparsing==2.4.6
 pyrsistent==0.16.0
