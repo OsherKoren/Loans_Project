@@ -2,10 +2,10 @@
 https://nbviewer.jupyter.org/github/OsherKoren/Loans_Project/blob/master/loans_project.ipynb 
 
 # Loans analysis & prediction
-**Reauirements: Attached is a requirements.txt for more convenience.
+**Reauirements: Attached is a requirements.txt for more convenience.**
 
 The required packages are:
-
+```
 atomicwrites==1.3.0
 
 attrs==19.3.0
@@ -111,18 +111,22 @@ wcwidth==0.1.9
 xlrd==1.2.0
 
 zipp==3.1.0
-
+```
 
 # The Data
-A sample of about 1000 business loans, with about 10 features that include categorical data, such as gender, the industry of the business and more, as well as numerical data, such as loan amount and age.
-
+```
+A sample of about 1000 business loans, with about 10 features that include categorical data, 
+such as gender, the industry of the business and more, as well as numerical data, such as loan amount and age.
+```
 # Description of the project - EDA & Prediction model of loan repayment. 
+```
 Analysis of doubtful and lost debts from the business loans portfolio. 
 Statistical analysis by demographic, business, and sectoral characteristics. 
 Then, using machine learning models, prediction of loan repayment prospects according to different parameters.
-
+```
 
 # Guide:
+```
 File: loans_project.ipynb
 
 This file includes an analysis of the data and building the prediction model.
@@ -147,10 +151,11 @@ File: ClassApplication.py
 
 Defines loan application information/ details.
 The prediction model will give a prediction results based on loan application information.
+```
 
-
-How to run the program
-
+# How to run the program
+```
 Run File: loanPredict.py
 
-Main file, main function to run for the prediction model
+Main file, main function - runs the prediction model
+```
